@@ -1,6 +1,3 @@
-// UsernamePasswordGenerator.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -20,7 +17,7 @@ char GetRandomChar()
     mt19937 gen(rd()); // Seed the generator
     uniform_int_distribution<> distr(0, 70); // Define the range
 
-    return pool[distr(gen)];
+    return pool[distr(gen)]; // Returns a random char from the pool
 }
 
 string GeneratePassword(int length) 
@@ -62,10 +59,11 @@ string GenerateUsername()
         ++line_number;
     }
 
+    // Close and re-open file to reset getline position
     file.close();
     file.open("words.txt");
-
     line_number = 0;
+
     while (line_number != second_stop && getline(file, second_word)) {
         ++line_number;
     }
